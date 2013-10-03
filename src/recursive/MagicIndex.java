@@ -1,4 +1,4 @@
-package recursive;
+package Recursive;
 
 import java.util.ArrayList;
 

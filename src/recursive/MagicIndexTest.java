@@ -1,4 +1,4 @@
-package recursive;
+package Recursive;
 
 import static org.junit.Assert.*;
 

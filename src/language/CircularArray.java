@@ -1,4 +1,4 @@
-package language;
+package Language;
 
 import java.util.Iterator;
 

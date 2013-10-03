@@ -1,4 +1,4 @@
-package recursive;
+package Recursive;
 
 import java.util.ArrayList;
 
@@ -72,6 +72,9 @@ public class PermutationII {
 	 * Function noSwap:
 	 * determines whether we should swap the number in target and the number in source
 	 * The number sits in the source num[source] shouldn't occur in the array num before. The range is [target, source - 1]
+	 * 
+	 * 1, 1, 2
+	 * 
 	 */
 	public boolean noSwap(int target, int source, int[] num){
 		//if target == source, return true
