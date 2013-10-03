@@ -16,7 +16,7 @@ public class BigSmallGameRule implements GameRule{
 				maxIndex = i;
 			}
 		}
-  
+
 		hands.get(maxIndex).addScore(10);
 	}
 	public ArrayList<Card> createSetOfCards(){

@@ -2,6 +2,7 @@ package CardGame;
 
 import java.util.ArrayList;
 
+
 import CardGame.Game.GameStatus;
 
 public class Game {
@@ -64,37 +65,25 @@ public class Game {
 		// dispatch cards to players
 		int i = 0;
 		Card card = null;
-		while ((card = deck.dealCard()) != null) {
-			hands.get(i % hands.size()).add(card);
-			i++;
-		}
-		i = 0;
-		status = GameStatus.PLAYING;
-		while (!gameRule.isOver(this)) {
-			// wait for hands deal the card.
-			for(Hand hand : hands){
-				synchronized(hand){
-					hand.notify();
-				}
+		
+		while(!isOver()){
+			ArrayList<Card> cards = new ArrayList<Card>();
+			for(int j = 0; j < hands.size(); j++){
+				cards.add(hands.get(j).lead());
 			}
-			while(round.size() < hands.size()){
-				try {
-					//waiting for player to lead card
-					wait();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			gameRule.score(hands, round);
-			//clean up round
-			round = new ArrayList<Card>();
+			gameRule.score(hands, cards);
 		}
-		this.status = GameStatus.OVER;
-		this.totalScore();
-
 	}
 	
+	public boolean isOver(){
+		for(Hand hand: hands){
+			if(hand.leftCards() != 0){
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public ArrayList<Hand> getHands() {
 		return new ArrayList<Hand>(this.hands);
 	}

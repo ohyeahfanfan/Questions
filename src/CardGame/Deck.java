@@ -1,6 +1,6 @@
 package CardGame;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Random;
 public class Deck <T extends Card>{
 	ArrayList<T> cards;
 	private int dealtIndex = 0;
@@ -17,7 +17,6 @@ public class Deck <T extends Card>{
 			cards.set(swapIndex, cards.get(i));
 			cards.set(i, temp);
 		}
-		
 	}
 	public int remainingCards(){
 		return cards.size() - dealtIndex;

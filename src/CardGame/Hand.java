@@ -20,6 +20,7 @@ public class Hand implements Runnable{
 	}
 	
 	public Card lead(){
+
 		if(cards.size() > 0){
 			Card card = cards.remove(0);
 			System.out.println("[" + handName +"] leads the card "  + card.suit().getName() + card.value());
@@ -35,6 +36,7 @@ public class Hand implements Runnable{
 	
 	public void addScore(int extra){
 		score += extra;
+
 		System.out.println("[" + handName +"] current score is " + score);
 		
 	}
@@ -71,9 +73,6 @@ public class Hand implements Runnable{
 		System.out.println("["+this.handName+"] is done");
 	}
 	
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

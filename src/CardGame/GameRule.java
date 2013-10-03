@@ -5,7 +5,6 @@ interface GameRule{
 	public abstract int maxHands();
 	public abstract ArrayList<Card> createSetOfCards();
 	public void score(ArrayList<Hand> hands, ArrayList<Card> cards);
-	public boolean isOver(Game game);
 }
 /*
 public class CardRule <T extends Card>{
