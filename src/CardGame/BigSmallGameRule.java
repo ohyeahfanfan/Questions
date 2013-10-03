@@ -16,6 +16,7 @@ public class BigSmallGameRule implements GameRule{
 				maxIndex = i;
 			}
 		}
+
 		hands.get(maxIndex).addScore(10);
 	}
 	public ArrayList<Card> createSetOfCards(){
@@ -26,6 +27,15 @@ public class BigSmallGameRule implements GameRule{
 			}
 		}
 		return cards;
+	}
+	public boolean isOver(Game game){
+		ArrayList<Hand> hands = game.getHands();
+		for(Hand hand: hands){
+			if(hand.leftCards() != 0){
+				return false;
+			}
+		}
+		return true;
 	}
 	/**
 	 * @param args

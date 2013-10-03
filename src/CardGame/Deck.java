@@ -1,15 +1,22 @@
 package CardGame;
-
 import java.util.ArrayList;
-
+import java.util.Random;
 public class Deck <T extends Card>{
 	ArrayList<T> cards;
 	private int dealtIndex = 0;
 	public Deck(ArrayList<T> deckOfCards){
 		cards = deckOfCards;
+		shuffle();
 	}
 	public void shuffle(){
-		
+		Random r = new Random();
+		for(int i = cards.size()-1; i > 0; i--){
+			//r.nextInt()
+			int swapIndex = r.nextInt(i);
+			T temp = cards.get(swapIndex);
+			cards.set(swapIndex, cards.get(i));
+			cards.set(i, temp);
+		}
 	}
 	public int remainingCards(){
 		return cards.size() - dealtIndex;

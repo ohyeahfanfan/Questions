@@ -12,6 +12,17 @@ public enum Suit {
 	public int getValue(){
 		return value;
 	}
+	public String getName(){
+		if(value == 0){
+			return "CLUB";
+		}else if(value == 1){
+			return "DIAMOND";
+		}else if(value == 2){
+			return "HEARD";
+		}else{
+			return "SPADE";
+		}
+	}
 	public static Suit getSuitFromValue(int value){
 		if(value == 0){
 			return CLUB;
