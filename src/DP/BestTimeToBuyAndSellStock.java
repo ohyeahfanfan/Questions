@@ -11,7 +11,7 @@ public class BestTimeToBuyAndSellStock {
 	 * 
 	 * Greedy?
 	 * 
-	 * MaxProfit(n) = Max{MaxProfit(n-1) + {buy at nth day and sell in one following day}}
+	 * MaxProfit(n) = Max{MaxProfit(n-1) + price[n] - min}
 	 */
 	public int maxProfit(int[] prices) {
         int min = Integer.MAX_VALUE;
@@ -22,9 +22,7 @@ public class BestTimeToBuyAndSellStock {
                 min = prices[i];
             }
             int profit = prices[i] - min; 
-            if( profit > max){
-                max = profit;
-            }
+            max = (profit > max ? profit: max);
         }
         return max;
     }

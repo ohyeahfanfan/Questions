@@ -8,7 +8,7 @@ public class BestTimeToBuyAndSellStockIII {
         * Design an algorithm to find the maximum profit. You may complete at most two transactions.
         * Note: You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
         * Solution
-	    * MaxProfitTwoTrans(0,n-1) = Max(MaxProfitOneTran(0,i)+MaxProfitOneTran(i+1,n-1))
+	    * MaxProfitTwoTrans(0,n-1) = Max(MaxProfitOneTran(0,i) + MaxProfitOneTran(i+1,n-1))
 	    */
 	    public int maxProfit(int[] prices) {
 	        if(prices == null || prices.length == 0) return 0; 
@@ -20,9 +20,9 @@ public class BestTimeToBuyAndSellStockIII {
 	                min = prices[i];
 	            }
 	            if(i==0){
-	                buyProfit[i] = prices[i] - min;
+	                sellProfit[i] = prices[i] - min;
 	            }else{
-	                buyProfit[i] = Math.max(buyProfit[i-1], prices[i] - min);
+	                sellProfit[i] = Math.max(sellProfit[i-1], prices[i] - min);
 	            }        
 	        }
 	        int max = Integer.MIN_VALUE;
@@ -31,14 +31,14 @@ public class BestTimeToBuyAndSellStockIII {
 	                max = prices[i];
 	            }
 	            if(i==prices.length-1){
-	                sellProfit[i] =  max-prices[i];
+	                buyProfit[i] =  max-prices[i];
 	            }else{
-	                sellProfit[i] = Math.max(sellProfit[i+1], max-prices[i]);
+	                buyProfit[i] = Math.max(buyProfit[i + 1], max-prices[i]);
 	            }
 	        }
 	        int maxProfit = Integer.MIN_VALUE;
 	        for(int i = 0; i < prices.length; i++){
-	            maxProfit = Math.max(maxProfit, buyProfit[i]+sellProfit[i]);
+	            maxProfit = Math.max(maxProfit, buyProfit[i] + sellProfit[i]);
 	        }
 	        return maxProfit;
 	    }

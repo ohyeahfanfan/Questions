@@ -32,7 +32,7 @@ public class WordLadderIIPathQueue {
 	 *  The queue stores the shortest paths 
 	 *  from start to current level string in the dictionary
 	 *  
-	 *  To slow to pass the large cases
+	 *  Too slow to pass the large cases
 	 *  
 	 */
 	public ArrayList<ArrayList<String>> findLadders(String start, String end, HashSet<String> dict) {

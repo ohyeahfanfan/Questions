@@ -9,6 +9,7 @@ import java.util.Queue;
 public class WordLadderIIAjacentList {
 
 	/**
+     *  WordLadder II
 	 *  Given two words (start and end), and a dictionary, find all shortest transformation sequence(s) from start to end, such that:
 
 		Only one letter can be changed at a time
@@ -27,13 +28,7 @@ public class WordLadderIIAjacentList {
 		    ["hit","hot","lot","log","cog"]
 		  ]
 	 *  
-	 *  Solution:
-	 *  Compare to the WordLadder II
-	 *  The queue stores the shortest paths 
-	 *  from start to current level string in the dictionary
-	 *  
-	 *  Too slow to pass the large cases
-	 *     
+	 *   ºÍword break II ºÜÏñ
 	 */
 	/*
 	 * Assume word "end" sits at level k
@@ -134,6 +129,8 @@ public class WordLadderIIAjacentList {
 	   
 	/*
 	 * Get all possible one step transforms 
+	 * !!! only return the one in the dict
+	 * 
 	 */
 	public ArrayList<String> getNeighbors(String word, HashSet<String> dict, String end){
 		ArrayList<String> neighbors = new ArrayList<String>();
