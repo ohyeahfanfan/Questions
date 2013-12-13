@@ -1,7 +1,34 @@
 package Math;
 
 public class PalindromeNumber {
-	/*
+	
+	//x = 9229
+    public boolean isPalindrome(int x) {
+        if(x < 0) return false;
+    	int divisor = 1;
+        //how to get the first digit
+        while(x/divisor >= 10){
+            divisor *= 10; 
+        }
+        //divisor = 1000
+        while(x != 0){ //???
+            int lastDigit = x % 10;       //OBTAIN LAST digit %
+            //after 1st round: lastDigit = 9
+            int firstDigit = x / divisor; //OBTAIN FIRST digit /
+            //after 1st round: firstDigit = 9
+            if(lastDigit != firstDigit){
+                return false;
+            }
+            x %= divisor;                //REMOVE the FIRST digit %
+            //after 1st round: x = 229
+            x /=  10;                    //REMOVE the LAST digit /
+            //after 1st round: x = 22
+            divisor /= 100; //divisor right shift 2 digits
+            //after 1st round:divisor = 10
+        }
+        return true;
+    }
+    /*
 	 * Palindrome Number
 	 * Determine whether an integer is a palindrome. Do this without extra space. 
 	 * 
@@ -11,7 +38,7 @@ public class PalindromeNumber {
 	 * 4. palindrome num
 	 * 
 	 */
-	public boolean isPalindrome(int x) {
+	public boolean isPalindrome_ (int x) {
        // !!!!
 	   int original = x;
        long reversed = 0;
@@ -41,7 +68,7 @@ public class PalindromeNumber {
 	 * which you conclude that it must be a palindrome. 
 	 * 
 	 */
-	boolean isPalindromeTwoPointers(int x) {
+	boolean isPalindromeTwoPointers_(int x) {
 		  if (x < 0) return false;
 		  int div = 1;
 		  while (x / div >= 10) {
@@ -57,8 +84,9 @@ public class PalindromeNumber {
 	  }
 	  return true;
 	}
+
 	 public static void main(String[] args) {
 		 PalindromeNumber pn = new PalindromeNumber();
-		 pn.isPalindrome(1);
+		 pn.isPalindrome(1001);
 	 }
 }

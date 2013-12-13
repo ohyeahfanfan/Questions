@@ -41,6 +41,22 @@ public class ReverseInteger {
 	        if(neg) reversedNum = -reversedNum;
 	        return (int)reversedNum;
 	    }
+	   public int reverse_(int x) {
+	        boolean neg = false;
+	        if(x < 0){
+	            neg = true;
+	            x = -x;
+	        }
+	        int rez = 0;
+	        while(x > 0){
+	            rez *= 10;
+	            int digit = x % 10;
+	            x = x / 10;
+	            rez += digit;
+	            
+	        }
+	        return neg ? -rez: rez;
+	    }
 	/**
 	 * @param args
 	 */

@@ -18,7 +18,7 @@ public class NQueenII {
     }
     
     public int placeQueen(int row, int n, int[] solution){
-        if(row==n){
+        if(row == n){
             return 1;
         }
         int count = 0;

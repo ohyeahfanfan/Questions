@@ -6,13 +6,18 @@ package LinkedList;
  *	For example,
  *	Given 1->2->3->3->4->4->5, return 1->2->5.
  *	Given 1->1->1->2->3, return 2->3 
+ *
+ * Solution:
+ * not equal to previous element & not equal to next element
+ * very elegant solution
  * 
- *  思路就是和前面一个不等，和后面一个也不等
- * 
+ * What I learned
+ * Dummy Node is very useful when the head is possible to be changed. 
+ * Dummy node is not essential to all the linkedlist questions.  
  */
 public class RemoveDuplicatesfromSortedListII {
 	 
-
+    //I like this solution!!!
 	public ListNode deleteDuplicates(ListNode head) {
 		ListNode dummy = new ListNode(0);
 		ListNode pre = null;
@@ -32,4 +37,30 @@ public class RemoveDuplicatesfromSortedListII {
 		tail.next = null;
 		return dummy.next;
 	}
+	
+	public ListNode deleteDuplicates2ndTime(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        boolean distinct = true;
+        while(head != null){
+            if(head.next != null){
+                if(head.val == head.next.val){
+                    distinct = false;
+                }else if(distinct){
+                    tail.next = head;
+                    tail = tail.next;
+                }else{
+                    distinct = true;
+                }
+            }else if(distinct){
+                tail.next = head;
+                tail = tail.next;
+            }
+            head = head.next;
+            
+        }
+        //!!!!
+        tail.next = null;
+        return dummy.next;
+   }
 }

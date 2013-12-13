@@ -17,8 +17,8 @@ public class MinWindow {
 	     * 
 	     * optimize on step 1
 	     * Two status
-	     * S1. s.substring(start, end+1) contain all the characters in T
-	     * S2. s.substring(start, end+1) doesn't contain all the characters in T
+	     * S1. s.substring(start, end+1) doesn't contain all the characters in T
+	     * S2. s.substring(start, end+1) contain all the characters in T
 	     * 1. S1 -> S2 end pointer keeps moving right until S2 
 	     * 2. S2 -> S1 start pointer keeps moving right until S1
 	     *
@@ -50,7 +50,8 @@ public String minWindow(String S, String T) {
 	        int end = 0;
 	        int start = 0;
 	        while(end < S.length()){
-	            if(count > 0 ){
+	            //S1. s.substring(start, end+1) doesn't contain all the characters in T
+	        	if(count > 0 ){
 	                char c = S.charAt(end);
 	                if(targetTable[c] > 0){
 	                    realTable[c] += 1;
@@ -60,9 +61,9 @@ public String minWindow(String S, String T) {
 	                }
 	                end++;
 	            }
+	        	//S2. s.substring(start, end+1) contain all the characters in T
 	            while(count == 0 && start <= end){
-
-	                char c = S.charAt(start);
+	            	char c = S.charAt(start);
 	                if(targetTable[c] > 0){
 	                    realTable[c] -= 1;
 	                    //some character appears more than target time

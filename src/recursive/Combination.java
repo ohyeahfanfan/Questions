@@ -2,6 +2,15 @@ package Recursive;
 
 import java.util.ArrayList;
 
+public class Combination {
+	/*
+	 * Test Case:
+	 * n = 0
+	 * n = 1 k = 0 
+	 * n = 1 k = 1
+	 * n = 2 k = 1
+	 */
+
 /*  
  *  @problem
  *  Combinations
@@ -34,14 +43,6 @@ import java.util.ArrayList;
  *  or not pick up 1 + from 2,3 pick up 2 elements
  *   
  */
-public class Combination {
-	/*
-	 * Test Case:
-	 * n = 0
-	 * n = 1 k = 0 
-	 * n = 1 k = 1
-	 * n = 2 k = 1
-	 */
 	public ArrayList<ArrayList<Integer>> combine(int n, int k) {
         ArrayList<ArrayList<Integer>> sets = new ArrayList<ArrayList<Integer>>();
 	      ArrayList<Integer> set = new ArrayList<Integer>();

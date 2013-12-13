@@ -17,26 +17,33 @@ public class PostOrderTraversal {
 	 * 3. 1,#,2,3
 	 * 
 	 */
-	 public ArrayList<Integer> postorderTraversal(TreeNode root) {
-	        ArrayList<Integer> rez = new ArrayList<Integer>();
-	        if(root == null) return rez;
-	        Stack<TreeNode> stack = new Stack<TreeNode>();
-	        stack.push(root);
-	        TreeNode pre = null;
-	        while(!stack.empty()){
-	        	TreeNode cur = stack.peek();
-	        	if(cur.left != null && pre != cur.left){
-	        		stack.push(cur.left);
-	        	}else if(cur.right != null && pre != cur.right){
-	        		stack.push(cur.right);
-	        	}else{
-	        		pre = stack.pop();
-	        		rez.add(pre.val);
-	        	}
-	        }
-	        return rez;
-	 }
-	
+	public ArrayList<Integer> postorderTraversal(TreeNode root) {
+        ArrayList<Integer> rez = new ArrayList<Integer>();
+        if(root == null) return rez;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode pre = null;
+        TreeNode cur = root;
+        while(!stack.empty()|| cur != null){
+        	//Status 1: left subtree hasn't been visited yet.
+        	if(cur != null){
+        	    stack.push(cur);
+        	    cur = cur.left;
+        	//Status 2 & 3:    
+        	}else{
+        	    cur = stack.peek();
+        	    //Status 2: left subtree is visited but right subtree hasn't visited
+        	    if(cur.right != null && pre != cur.right){
+        	        cur = cur.right;
+        	    //Status 3: both subtrees are visited
+        	    }else{
+        	        pre = stack.pop();
+        	        rez.add(pre.val);
+        	        cur = null;   
+        	    }
+        	}
+        }
+        return rez;
+ }
 	/**
 	 * @param args
 	 */
@@ -44,8 +51,7 @@ public class PostOrderTraversal {
 		// TODO Auto-generated method stub
 		PostOrderTraversal obj = new PostOrderTraversal();
 		TreeNode node = new TreeNode(1);
-		node.right = new TreeNode(2);
-		node.right.left = new TreeNode(3);
+		node.left = new TreeNode(2);
 		obj.postorderTraversal(node);
 		
 	}

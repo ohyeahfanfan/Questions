@@ -1,6 +1,7 @@
 package Recursive;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /* @Source Leetcode & Crc 150 Charpter 9
  * http://leetcode.com/onlinejudge#question_78
@@ -66,9 +67,10 @@ import java.util.ArrayList;
  * Collections.copy(copy, set);
  * 
  * 
-  */
+ */
 public class SubSet {
 	 public static ArrayList<ArrayList<Integer>> subsets(int[] S) {
+           Arrays.sort(S);
 	       ArrayList<ArrayList<Integer>> sets = new ArrayList<ArrayList<Integer>>();
 	       ArrayList<Integer> set = new ArrayList<Integer>();   
 	       if(S == null) return sets;
@@ -94,9 +96,6 @@ public class SubSet {
 		 set.add(S[i]);
 		 subset(i+1, set, S, sets);
 		 set.remove(set.size()-1);
-	 }
-	 public static void main(String[] args) {
-	 
 	 }
 
 }

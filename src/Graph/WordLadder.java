@@ -87,7 +87,7 @@ public class WordLadder {
 				if(c == letter) continue;
 				letters[i] = c;
 				neighbors.add(new String(letters));
-				//!!!!
+				//!!!! change the altered character back
 				letters[i] = letter;
 			}
 		}

@@ -16,11 +16,14 @@ public class UniquePathII {
 		There is one obstacle in the middle of a 3x3 grid as illustrated below.
 			 * 
 	 */
+	
 	public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int[] dp = new int[obstacleGrid[0].length];
         //[[0]]
         dp[0] = 1;
         for(int i = 0; i < obstacleGrid.length; i++){
+        	// {{0}
+        	// ,{1}} so we should let j from 0 instead of 1
             for(int j = 0; j < obstacleGrid[0].length; j++){
                 if(obstacleGrid[i][j]==1){
                     //[[1]]
@@ -36,4 +39,9 @@ public class UniquePathII {
         }
         return dp[dp.length-1];
     }
+	 public static void main(String args[] ) {
+		 UniquePathII obj = new UniquePathII();
+		 int[][] data = {{0},{1}};
+	     System.out.println(obj.uniquePathsWithObstacles(data));
+	 }
 }

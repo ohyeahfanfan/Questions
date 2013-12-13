@@ -23,6 +23,8 @@ public class NQueen {
         return rez;
     }
     
+	//f(row[n]) <= f(row[n-1])  & 
+	//queen can be placed into row n no queen in the same row, same column or no diagonals
     public void placeQueen(int row, int[] solution, ArrayList<String[]> rez){
         if(row == solution.length){
             rez.add(convertRez(solution));
@@ -44,7 +46,7 @@ public class NQueen {
             if(solution[i]==col){
                 return false;
             }
-            //diagonals no same row
+            //diagonals no same (the structure of solution ensure no same row. The index of solution is row)
             int rowDiff = Math.abs(i-row);
             int colDiff = Math.abs(solution[i] - col);
             if(rowDiff == colDiff) return false;

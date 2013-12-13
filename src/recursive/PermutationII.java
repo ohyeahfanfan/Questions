@@ -1,6 +1,7 @@
 package Recursive;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class PermutationII {
 
@@ -19,6 +20,12 @@ public class PermutationII {
 	 *  Therefore,
 	 *  One position
 	 *  !!each unique number was placed only once!!
+	 *  每个val在每个位置只能被选一次
+     *   相同val之前的相对位置不变
+     *    0,1,2,1
+     *    当我们需要最后一个1和第一个0swap的时候
+     *    第一个1已然swap过了
+     *    对于位置0的进行的swap是从左向右开始的
 	 *  
 	 *  Solution:
 	 *  We can have a noSwap function to check if this number has been placed in current position.
@@ -41,7 +48,7 @@ public class PermutationII {
         permute(0, num, permutations);
         return permutations;
     }
-	public void permute(int pos, int[] num, ArrayList<ArrayList<Integer>>  permutations){
+	public void permute_(int pos, int[] num, ArrayList<ArrayList<Integer>>  permutations){
 		//base case if current pos is the last element in the array;
 		if(pos == num.length - 1){
 			ArrayList<Integer> permutation = new ArrayList<Integer>();
@@ -55,6 +62,31 @@ public class PermutationII {
 			if(noSwap(pos, i, num)){
 				continue;
 			}
+			swap(pos, i, num);
+			permute(pos+1, num, permutations);
+			//swap back, make sure every unique number after pos has been selected
+			swap(pos, i, num);
+		}
+		return;
+		
+	}
+	public void permute(int pos, int[] num, ArrayList<ArrayList<Integer>>  permutations){
+		//base case if current pos is the last element in the array;
+		if(pos == num.length - 1){
+			ArrayList<Integer> permutation = new ArrayList<Integer>();
+			for(int i = 0; i < num.length; i++){
+				permutation.add(num[i]);
+			}
+			permutations.add(permutation);
+			return;
+		}
+		HashSet<Integer> dict = new HashSet<Integer>();
+		for(int i = pos; i < num.length; i++ ){
+			//use space to get time
+			if(dict.contains(num[i])) 
+		        continue;
+		    else 
+		        dict.add(num[i]);
 			swap(pos, i, num);
 			permute(pos+1, num, permutations);
 			//swap back, make sure every unique number after pos has been selected

@@ -2,6 +2,7 @@ package Recursive;
 
 import java.util.ArrayList;
 
+import CombinationWithDup.SubSetII;
 import junit.framework.TestCase;
 
 
@@ -13,7 +14,7 @@ public class SubSetIITest extends TestCase {
 		 S = new int[2];
 		 S[0] = 2;
 		 S[1] = 2;
-		 sets = SubSetII.subsetsWithDup(S);
+		 sets = new SubSetII().subsetsWithDup(S);
 	}
 
 }
