@@ -1,4 +1,5 @@
 package DP;
+
 public class DecodeWay {
 	//f(n) = f(n-1) + f(n-2) if 1 <= a[n-1]a[n] <= 26
 	//00,10
